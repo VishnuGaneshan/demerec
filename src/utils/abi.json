@@ -1,0 +1,637 @@
+[
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_name",
+				"type": "string"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_address",
+				"type": "address"
+			}
+		],
+		"name": "actAdmin",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_address",
+				"type": "address"
+			}
+		],
+		"name": "actHospital",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_address",
+				"type": "address"
+			}
+		],
+		"name": "actMNGR",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_identity",
+				"type": "string"
+			},
+			{
+				"internalType": "address",
+				"name": "_address",
+				"type": "address"
+			}
+		],
+		"name": "addAdmin",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_identity",
+				"type": "string"
+			},
+			{
+				"internalType": "address",
+				"name": "_address",
+				"type": "address"
+			}
+		],
+		"name": "addHospital",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_identity",
+				"type": "string"
+			},
+			{
+				"internalType": "address",
+				"name": "_address",
+				"type": "address"
+			}
+		],
+		"name": "addManager",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_identity",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_emergencyContact",
+				"type": "string"
+			}
+		],
+		"name": "addPatient",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_admin",
+				"type": "address"
+			}
+		],
+		"name": "adminDetail",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "string",
+						"name": "Identity",
+						"type": "string"
+					},
+					{
+						"internalType": "bool",
+						"name": "jobStatus",
+						"type": "bool"
+					}
+				],
+				"internalType": "struct Demerec.Person",
+				"name": "",
+				"type": "tuple"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_address",
+				"type": "address"
+			}
+		],
+		"name": "deactAdmin",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_address",
+				"type": "address"
+			}
+		],
+		"name": "deactHospital",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_address",
+				"type": "address"
+			}
+		],
+		"name": "deactMNGR",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getAdminsList",
+		"outputs": [
+			{
+				"internalType": "address[]",
+				"name": "",
+				"type": "address[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getHospitals",
+		"outputs": [
+			{
+				"internalType": "address[]",
+				"name": "",
+				"type": "address[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getMNGRsList",
+		"outputs": [
+			{
+				"internalType": "address[]",
+				"name": "",
+				"type": "address[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getMedicalRecordFormats",
+		"outputs": [
+			{
+				"internalType": "string[]",
+				"name": "",
+				"type": "string[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getMyMedicalRecords",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "address",
+						"name": "hospital",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "patient",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "MedicalDetails",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "formatIndex",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct Demerec.MedicalRecord[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getMyRole",
+		"outputs": [
+			{
+				"internalType": "uint8",
+				"name": "",
+				"type": "uint8"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_patient",
+				"type": "address"
+			}
+		],
+		"name": "getPatient",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "string",
+						"name": "Identity",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "emergencyContact",
+						"type": "string"
+					},
+					{
+						"components": [
+							{
+								"internalType": "address",
+								"name": "hospital",
+								"type": "address"
+							},
+							{
+								"internalType": "address",
+								"name": "patient",
+								"type": "address"
+							},
+							{
+								"internalType": "string",
+								"name": "MedicalDetails",
+								"type": "string"
+							},
+							{
+								"internalType": "uint256",
+								"name": "formatIndex",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct Demerec.MedicalRecord[]",
+						"name": "medicalRecords",
+						"type": "tuple[]"
+					}
+				],
+				"internalType": "struct Demerec.Patient",
+				"name": "",
+				"type": "tuple"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_hospital",
+				"type": "address"
+			}
+		],
+		"name": "giveAccess",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_hospital",
+				"type": "address"
+			}
+		],
+		"name": "hospitalDetail",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "string",
+						"name": "Identity",
+						"type": "string"
+					},
+					{
+						"internalType": "bool",
+						"name": "Status",
+						"type": "bool"
+					},
+					{
+						"components": [
+							{
+								"internalType": "address",
+								"name": "hospital",
+								"type": "address"
+							},
+							{
+								"internalType": "address",
+								"name": "patient",
+								"type": "address"
+							},
+							{
+								"internalType": "string",
+								"name": "MedicalDetails",
+								"type": "string"
+							},
+							{
+								"internalType": "uint256",
+								"name": "formatIndex",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct Demerec.MedicalRecord[]",
+						"name": "historyLog",
+						"type": "tuple[]"
+					}
+				],
+				"internalType": "struct Demerec.Hospital",
+				"name": "",
+				"type": "tuple"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "imEmployee",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "string",
+						"name": "Identity",
+						"type": "string"
+					},
+					{
+						"internalType": "bool",
+						"name": "jobStatus",
+						"type": "bool"
+					}
+				],
+				"internalType": "struct Demerec.Person",
+				"name": "p",
+				"type": "tuple"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "imHospital",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "string",
+						"name": "Identity",
+						"type": "string"
+					},
+					{
+						"internalType": "bool",
+						"name": "Status",
+						"type": "bool"
+					},
+					{
+						"components": [
+							{
+								"internalType": "address",
+								"name": "hospital",
+								"type": "address"
+							},
+							{
+								"internalType": "address",
+								"name": "patient",
+								"type": "address"
+							},
+							{
+								"internalType": "string",
+								"name": "MedicalDetails",
+								"type": "string"
+							},
+							{
+								"internalType": "uint256",
+								"name": "formatIndex",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct Demerec.MedicalRecord[]",
+						"name": "historyLog",
+						"type": "tuple[]"
+					}
+				],
+				"internalType": "struct Demerec.Hospital",
+				"name": "",
+				"type": "tuple"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "imOwner",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			},
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "imPatient",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "string",
+						"name": "Identity",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "emergencyContact",
+						"type": "string"
+					},
+					{
+						"components": [
+							{
+								"internalType": "address",
+								"name": "hospital",
+								"type": "address"
+							},
+							{
+								"internalType": "address",
+								"name": "patient",
+								"type": "address"
+							},
+							{
+								"internalType": "string",
+								"name": "MedicalDetails",
+								"type": "string"
+							},
+							{
+								"internalType": "uint256",
+								"name": "formatIndex",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct Demerec.MedicalRecord[]",
+						"name": "medicalRecords",
+						"type": "tuple[]"
+					}
+				],
+				"internalType": "struct Demerec.Patient",
+				"name": "",
+				"type": "tuple"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_manager",
+				"type": "address"
+			}
+		],
+		"name": "managerDetail",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "string",
+						"name": "Identity",
+						"type": "string"
+					},
+					{
+						"internalType": "bool",
+						"name": "jobStatus",
+						"type": "bool"
+					}
+				],
+				"internalType": "struct Demerec.Person",
+				"name": "",
+				"type": "tuple"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_hospital",
+				"type": "address"
+			}
+		],
+		"name": "takeAccess",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_patient",
+				"type": "address"
+			},
+			{
+				"internalType": "string",
+				"name": "_MedicalDetails",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_formatIndex",
+				"type": "uint256"
+			}
+		],
+		"name": "writeMedicalRecord",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	}
+]

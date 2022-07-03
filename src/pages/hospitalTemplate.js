@@ -10,19 +10,34 @@ const provider = new ethers.providers.Web3Provider(ethereum);
 const signer = provider.getSigner();  
 const demerecContract = new ethers.Contract(contractAddress, contractABI, signer);
 
-const getDetails = async () => {
-    let 
-}
-
 
 const HospitalTemplate = () => {
+    const getDetails = async () => {
+        let details = await demerecContract.imHospital();
+        let [identity, Status, medicalrecords] = [details[0], details[1], details[2]]
+        // console.log("status:", Status);
+        // console.log("medical records;", medicalrecords);
+        
+        let [,name,] = identity.split("'");
+        let _name = name.replace(/\$/g, ", ");;
+        console.log("identity:", _name);
+        if(Status){
+            Status = "Active";
+        }else{
+            Status = "Unactive";
+        }
+        setDetails([_name, Status]);
+    }
+
+    const [[name, status], setDetails] = useState([,,])
     useEffect(()=>{
         getDetails();
     },[]);
     return(
         <>
         <div className="App-header">
-
+            <h1>Hospital: {name}</h1>
+            Your status: {status}
         </div>
         </>
     )

@@ -1,24 +1,23 @@
-.App {
+/* .App {
   text-align: center;
   background-color: #3d4555;
-  /* background-image: url("../public/DeMeRecBackground.png"); */
+  background-image: url("../public/DeMeRecBackground.png");
   min-height: 100vh;
-  /* margin: ; */
+  margin: ;
   color: white;
-}
+} */
 
-.App-content {
+/* .App-content {
   display: flex;
   flex-direction: column;
   height:80vh;
   align-items: center;
   justify-content: center;
-  /* <div className='App-content'> */ 
+  <div className='App-content'> 
   background-image: url("../public/DeMeRecBackground.png");
   background-size: cover;
   background-attachment:fixed;
-
-}
+} */
 
 /* .App-logo {
   height: 40vmin;
@@ -34,11 +33,11 @@
 .App-header {
   background-color: #282c34;
   /* min-height: 100vh; */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* align-items: center; */
+  /* justify-content: center; */
+  /* font-size: calc(10px + 2vmin); */
   color: white;
 }
 
@@ -55,11 +54,11 @@
   }
 } */
 
-table{
+/* table{
   margin: 20px;
-}
+} */
 
-table, td{
+/* table, td{
   padding: 2px;
   border: 2px solid white;
-} 
+}  */

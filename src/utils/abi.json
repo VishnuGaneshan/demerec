@@ -44,7 +44,7 @@
 				"type": "address"
 			}
 		],
-		"name": "actMNGR",
+		"name": "actMngr",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
@@ -107,6 +107,19 @@
 		"inputs": [
 			{
 				"internalType": "string",
+				"name": "_format",
+				"type": "string"
+			}
+		],
+		"name": "addMedicalRecordFormats",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
 				"name": "_identity",
 				"type": "string"
 			},
@@ -140,11 +153,11 @@
 					},
 					{
 						"internalType": "bool",
-						"name": "jobStatus",
+						"name": "JobStatus",
 						"type": "bool"
 					}
 				],
-				"internalType": "struct Demerec.Person",
+				"internalType": "struct Demerec.Employee",
 				"name": "",
 				"type": "tuple"
 			}
@@ -186,9 +199,28 @@
 				"type": "address"
 			}
 		],
-		"name": "deactMNGR",
+		"name": "deactMngr",
 		"outputs": [],
 		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_patient",
+				"type": "address"
+			}
+		],
+		"name": "emergencyContacting",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
 		"type": "function"
 	},
 	{
@@ -219,19 +251,6 @@
 	},
 	{
 		"inputs": [],
-		"name": "getMNGRsList",
-		"outputs": [
-			{
-				"internalType": "address[]",
-				"name": "",
-				"type": "address[]"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
 		"name": "getMedicalRecordFormats",
 		"outputs": [
 			{
@@ -245,34 +264,12 @@
 	},
 	{
 		"inputs": [],
-		"name": "getMyMedicalRecords",
+		"name": "getMngrsList",
 		"outputs": [
 			{
-				"components": [
-					{
-						"internalType": "address",
-						"name": "hospital",
-						"type": "address"
-					},
-					{
-						"internalType": "address",
-						"name": "patient",
-						"type": "address"
-					},
-					{
-						"internalType": "string",
-						"name": "MedicalDetails",
-						"type": "string"
-					},
-					{
-						"internalType": "uint256",
-						"name": "formatIndex",
-						"type": "uint256"
-					}
-				],
-				"internalType": "struct Demerec.MedicalRecord[]",
+				"internalType": "address[]",
 				"name": "",
-				"type": "tuple[]"
+				"type": "address[]"
 			}
 		],
 		"stateMutability": "view",
@@ -310,19 +307,14 @@
 					},
 					{
 						"internalType": "string",
-						"name": "emergencyContact",
+						"name": "EmergencyContact",
 						"type": "string"
 					},
 					{
 						"components": [
 							{
 								"internalType": "address",
-								"name": "hospital",
-								"type": "address"
-							},
-							{
-								"internalType": "address",
-								"name": "patient",
+								"name": "SecondAccount",
 								"type": "address"
 							},
 							{
@@ -332,12 +324,12 @@
 							},
 							{
 								"internalType": "uint256",
-								"name": "formatIndex",
+								"name": "FormatIndex",
 								"type": "uint256"
 							}
 						],
 						"internalType": "struct Demerec.MedicalRecord[]",
-						"name": "medicalRecords",
+						"name": "MedicalRecordLog",
 						"type": "tuple[]"
 					}
 				],
@@ -373,48 +365,14 @@
 		"name": "hospitalDetail",
 		"outputs": [
 			{
-				"components": [
-					{
-						"internalType": "string",
-						"name": "Identity",
-						"type": "string"
-					},
-					{
-						"internalType": "bool",
-						"name": "Status",
-						"type": "bool"
-					},
-					{
-						"components": [
-							{
-								"internalType": "address",
-								"name": "hospital",
-								"type": "address"
-							},
-							{
-								"internalType": "address",
-								"name": "patient",
-								"type": "address"
-							},
-							{
-								"internalType": "string",
-								"name": "MedicalDetails",
-								"type": "string"
-							},
-							{
-								"internalType": "uint256",
-								"name": "formatIndex",
-								"type": "uint256"
-							}
-						],
-						"internalType": "struct Demerec.MedicalRecord[]",
-						"name": "historyLog",
-						"type": "tuple[]"
-					}
-				],
-				"internalType": "struct Demerec.Hospital",
+				"internalType": "string",
 				"name": "",
-				"type": "tuple"
+				"type": "string"
+			},
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
 			}
 		],
 		"stateMutability": "view",
@@ -422,7 +380,7 @@
 	},
 	{
 		"inputs": [],
-		"name": "imEmployee",
+		"name": "imAdmin",
 		"outputs": [
 			{
 				"components": [
@@ -433,12 +391,12 @@
 					},
 					{
 						"internalType": "bool",
-						"name": "jobStatus",
+						"name": "JobStatus",
 						"type": "bool"
 					}
 				],
-				"internalType": "struct Demerec.Person",
-				"name": "p",
+				"internalType": "struct Demerec.Employee",
+				"name": "",
 				"type": "tuple"
 			}
 		],
@@ -458,19 +416,14 @@
 					},
 					{
 						"internalType": "bool",
-						"name": "Status",
+						"name": "JobStatus",
 						"type": "bool"
 					},
 					{
 						"components": [
 							{
 								"internalType": "address",
-								"name": "hospital",
-								"type": "address"
-							},
-							{
-								"internalType": "address",
-								"name": "patient",
+								"name": "SecondAccount",
 								"type": "address"
 							},
 							{
@@ -480,16 +433,41 @@
 							},
 							{
 								"internalType": "uint256",
-								"name": "formatIndex",
+								"name": "FormatIndex",
 								"type": "uint256"
 							}
 						],
 						"internalType": "struct Demerec.MedicalRecord[]",
-						"name": "historyLog",
+						"name": "HistoryLog",
 						"type": "tuple[]"
 					}
 				],
 				"internalType": "struct Demerec.Hospital",
+				"name": "",
+				"type": "tuple"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "imManager",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "string",
+						"name": "Identity",
+						"type": "string"
+					},
+					{
+						"internalType": "bool",
+						"name": "JobStatus",
+						"type": "bool"
+					}
+				],
+				"internalType": "struct Demerec.Employee",
 				"name": "",
 				"type": "tuple"
 			}
@@ -528,19 +506,14 @@
 					},
 					{
 						"internalType": "string",
-						"name": "emergencyContact",
+						"name": "EmergencyContact",
 						"type": "string"
 					},
 					{
 						"components": [
 							{
 								"internalType": "address",
-								"name": "hospital",
-								"type": "address"
-							},
-							{
-								"internalType": "address",
-								"name": "patient",
+								"name": "SecondAccount",
 								"type": "address"
 							},
 							{
@@ -550,12 +523,12 @@
 							},
 							{
 								"internalType": "uint256",
-								"name": "formatIndex",
+								"name": "FormatIndex",
 								"type": "uint256"
 							}
 						],
 						"internalType": "struct Demerec.MedicalRecord[]",
-						"name": "medicalRecords",
+						"name": "MedicalRecordLog",
 						"type": "tuple[]"
 					}
 				],
@@ -586,11 +559,11 @@
 					},
 					{
 						"internalType": "bool",
-						"name": "jobStatus",
+						"name": "JobStatus",
 						"type": "bool"
 					}
 				],
-				"internalType": "struct Demerec.Person",
+				"internalType": "struct Demerec.Employee",
 				"name": "",
 				"type": "tuple"
 			}

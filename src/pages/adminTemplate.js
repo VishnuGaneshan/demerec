@@ -1,9 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {ethers} from "ethers";
-import abi from "../utils/abi.json";
-
-const contractAddress = "0x14A9d45Cb0d92498de0d5CF3525b35D839a0Ad7E";
-const contractABI = abi;
+import {contractABI, contractAddress} from "../utils/contract";
 
 const { ethereum } = window;
 const provider = new ethers.providers.Web3Provider(ethereum);
@@ -16,12 +13,8 @@ const AdminTemplate =() =>{
 
     const getDetails = async () => { 
         try {
-            let details = await demerecContract.imEmployee();
+            let details = await demerecContract.imAdmin();
             let [,result,] = details[0].split("'");
-            if(result === undefined){
-                alert("You Are Not A Admin! This is not your page")
-                return;
-            }
             let [_name , _phno , _aadhar , _address] = result.split("$");
             setEmployee([_name, _phno, _aadhar, _address]);
             getListOfHospitalAddress();
@@ -199,41 +192,65 @@ const AdminTemplate =() =>{
     
     return (
         <>
+        { name ? (<>
         <div className="App-header">
-            <h2>Welcome Back Admin</h2>
-            <p>Name: {name} Phone No.: {phno}</p>
-            <p>Aadhar No.: {aadhar} Address: {address}</p>
+            <h2>Name: {name} Phone No.: {phno}</h2>
+            <h2>Aadhar No.: {aadhar} Address: {address}</h2>
         </div>
+        <br/>
         <div className="Add-Hospital" style={{backgroundColor: "white" , textAlign:"center" ,color: "black"}}>
             <h4>Add Hospital</h4>
-            <label>Hospital Name: <input id="addName" type="text" placeholder="Name Of Hospital" /></label>
-            <label>Hospital Describtion: <input id="addDescribtion" type="text" placeholder="Describtion Of Hospital" /></label>
-            <label>Phone no.: +91<input id="addPhone" type="number" placeholder="Phone no. Of Hospital" /></label>
-            <br/>
-            <label>Hospital Location: <input id="addLocation" type="text" placeholder="Location Of Hospital" /></label>
-            <label>Wallet Address:<input id="addAddress" type="text" placeholder="Wallet address used by Hospital" /></label>
-            <button  onClick={addHospital}>Add Hospital</button>
+            <div className="input-group">
+            <span className="input-group-text">Hospital Name</span>
+            <input className="form-control" id="addName" type="text" placeholder="Name Of Hospital" />
+            </div>
+            <div className="input-group">
+            <span className="input-group-text">Hospital Describtion</span>
+            <input className="form-control" id="addDescribtion" type="text" placeholder="Describtion Of Hospital" />
+            </div>
+            <div className="input-group">
+            <span className="input-group-text">Phone no.: +91</span>
+            <input className="form-control" id="addPhone" type="number" placeholder="Phone no. Of Hospital" />
+            </div>
+            <div className="input-group">
+            <span className="input-group-text">Hospital Location</span>
+            <input className="form-control" id="addLocation" type="text" placeholder="Location Of Hospital" />
+            </div>
+            <div className="input-group">
+            <span className="input-group-text">Wallet Address</span>
+            <input className="form-control" id="addAddress" type="text" placeholder="Wallet address used by Hospital" />
+            </div>
+            <button className="btn btn-primary" onClick={addHospital}>Add Hospital</button>
             <br/>
         </div>
+        <br/>
         <div className="Act-Deact-Admin">
-            <label>Change Job Status of Hospital:</label>
-            <input id="modiAddress" type="text" placeholder="Blockchain Address" ></input>
-            <button onClick={activator} >Activate</button>
-            <button onClick={deactivator} >Deactivate</button>
+            <h4>Change Status of Hospital</h4>
+            <div className="input-group">
+            <span className="input-group-text">Wallet Address</span>
+            <input className="form-control" id="modiAddress" type="text" placeholder="Hospital Address" ></input>
+            </div>
+            <button className="btn btn-primary" onClick={activator} >Activate</button>
+            <button className="btn btn-primary" onClick={deactivator} >Deactivate</button>
         </div>
-        <table>
+        <br/>
+        <h4>Hospitals List</h4>
+        <table className="table table-striped table-hover">
             <thead>
                 <tr>
                     <th>Hospital Name</th>
-                    <th>Location</th>
-                    <th>describtion</th>
+                    <th>Describtion</th>
                     <th>Phone no.</th>
+                    <th>Location</th>
                     <th>Address</th>
-                    <th>Job Status</th>
+                    <th>Status</th>
                 </tr>
             </thead>
             <HospitalList/>
         </table>
+        </>) : (<div className="spinner-border text-success" role="status">
+        <span className="visually-hidden">Loading...</span>
+        </div>) }
         </>
     );
 }

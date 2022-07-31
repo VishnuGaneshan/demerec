@@ -1,15 +1,11 @@
 import React, {useEffect, useState} from "react";
 import {ethers} from "ethers";
-import abi from "../utils/abi.json";
-
-const contractAddress = "0x14A9d45Cb0d92498de0d5CF3525b35D839a0Ad7E";
-const contractABI = abi;
+import {contractABI, contractAddress} from "../utils/contract";
 
 const { ethereum } = window;
 const provider = new ethers.providers.Web3Provider(ethereum);
 const signer = provider.getSigner();  
 const demerecContract = new ethers.Contract(contractAddress, contractABI, signer);
-// let myRole = await demerecContract.getMyRole();
 
 const OwnerTemplate = () => {
     const [[ownerName, ownerAddress], setName] = useState(["",""]);
@@ -31,7 +27,7 @@ const OwnerTemplate = () => {
 
     const getListOfManagerAddress = async () => {
         try{
-            let list = await demerecContract.getMNGRsList();
+            let list = await demerecContract.getMngrsList();
             listOfManagerAddress = list;
             // console.log(listOfManagerAddress);
             gettingList();
@@ -45,7 +41,7 @@ const OwnerTemplate = () => {
         for(let i=0; i < listOfManagerAddress.length; i++){
             let address = listOfManagerAddress[i];
             let details = await demerecContract.managerDetail(address);
-            // console.log(details);
+            // console.log(details[1]);
             let [,result,] = details[0].split("'");
             result = result.toUpperCase().split("$");
             result.push(address);
@@ -102,7 +98,7 @@ const OwnerTemplate = () => {
                 alert("Please enter Address!")
                 return;
             }
-            await demerecContract.actMNGR(x);
+            await demerecContract.actMngr(x);
             console.log("activating" , x);
         } catch (error) {
             console.log(error);
@@ -116,7 +112,7 @@ const OwnerTemplate = () => {
                 alert("Please enter Address!")
                 return;
             }
-            await demerecContract.deactMNGR(x);
+            await demerecContract.deactMngr(x);
             console.log("deactivating" , x);
         } catch (error) {
             console.log(error);
@@ -186,31 +182,49 @@ const OwnerTemplate = () => {
     },[ownerAddress]);
 
     return (
-        <>
+        <div className="owner">
         <div className="App-header">
-            <h2>Welcome Back Owner</h2>
-            <h3>Name: {ownerName}, address: {ownerAddress}</h3>
+            <h2>Name: {ownerName}</h2>
+            <h2>Address: {ownerAddress}</h2>
         </div>
+        <br/>
         <div className="Add-Manager" style={{backgroundColor: "white" , textAlign:"center" ,color: "black"}}>
             <h4>Add manager</h4>
-            <label>Name:<input id="addName" type="text" placeholder="Name Of Manager" /></label>
-            <label>Phone no.: +91<input id="addPhone" type="number" placeholder="Phone no. Of Manager" /></label>
-            <label>Aadhar no.:<input id="addAadhar" type="number" placeholder="Aadhar no. Of Manager" /></label>
-            <br/>
-            <label>Location:<input id="addLocation" type="text" placeholder="Location Of Manager" /></label>
-            <label>Wallet Address:<input id="addAddress" type="text" placeholder="Wallet address Of Manager" /></label>
-            <button onClick={addManager} >Add Manager</button>
-            <br/>
+            <div className="input-group">
+            <span className="input-group-text">Name</span>
+            <input className="form-control" id="addName" type="text" placeholder="Name Of Manager" />
+            </div>
+            <div className="input-group">
+            <span className="input-group-text">Phone No.: +91</span>
+            <input className="form-control" id="addPhone" type="number" placeholder="Phone no. Of Manager" />
+            </div>
+            <div className="input-group">
+            <span className="input-group-text">Aadhar No.</span>
+            <input className="form-control" id="addAadhar" type="number" placeholder="Aadhar no. Of Manager" />
+            </div>
+            <div className="input-group">
+            <span className="input-group-text">Location</span>
+            <input className="form-control" id="addLocation" type="text" placeholder="Location Of Manager" />
+            </div>
+            <div className="input-group">
+            <span className="input-group-text">Wallet Address</span>
+            <input className="form-control" id="addAddress" type="text" placeholder="Wallet address Of Manager" />
+            </div>
+            <button className="btn btn-primary" onClick={addManager} >Add Manager</button>
         </div>
         <br/>
         <div className="Act-Deact-Manager">
-            <label>Change Job Status of Manager:</label>
-            <input id="modiAddress" type="text" placeholder="Blockchain Address" ></input>
-            <button onClick={activator} >Activate</button>
-            <button onClick={deactivator} >Deactivate</button>
+            <h4>Change Job Status of Manager</h4>
+            <div className="input-group">
+            <span className="input-group-text">Wallet Address</span>
+            <input className="form-control" id="modiAddress" type="text" placeholder="Manager Address" ></input>
+            </div>
+            <button className="btn btn-primary" onClick={activator} >Activate</button>
+            <button className="btn btn-primary" onClick={deactivator} >Deactivate</button>
         </div>
         <br/>
-        <table>
+        <h4>Manager List</h4>
+        <table className="table table-striped table-hover">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -223,8 +237,7 @@ const OwnerTemplate = () => {
             </thead>
             <ManagerList/>
         </table>
-            {/* <RenderingArrayOfObjects/>              */}
-        </>
+        </div>
     );
 };
 

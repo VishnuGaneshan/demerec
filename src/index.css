@@ -1,4 +1,5 @@
-body {
+html {
   margin: 0;
-  min-width: 900px;
+  min-width: 1000px;
+  text-align: center;
 }

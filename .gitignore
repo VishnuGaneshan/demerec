@@ -8,7 +8,7 @@
 # testing
 /sample_input
 /coverage
-/utils
+src/utils
 
 # production
 /build

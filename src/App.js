@@ -1,7 +1,7 @@
 import './App.css';
 import React, { useState, useEffect } from "react";
 import {ethers} from "ethers";
-import abi from "./utils/abi.json";
+import {contractABI, contractAddress} from "./utils/contract";
 import {
   BrowserRouter as Router,
   Routes,
@@ -12,10 +12,8 @@ import OwnerTemplate from './pages/ownerTemplate';
 import ManagerTemplate from './pages/managerTemplate';
 import AdminTemplate from './pages/adminTemplate';
 import HospitalTemplate from './pages/hospitalTemplate';
-
-
-const contractAddress = "0x14A9d45Cb0d92498de0d5CF3525b35D839a0Ad7E";
-const contractABI = abi;
+import NewUserTemplate from './pages/newUserTemplate';
+import PatientTemplate from './pages/patientTemplate';
 
 function set_role( x ){
   if( x === 0){
@@ -54,7 +52,7 @@ function App() {
         const accounts = await ethereum.request({ method: "eth_accounts" });
 
         if(accounts.length === 0){
-          alert("No authorized account found");
+          // alert("No authorized account found");
           console.log("No authorized account found");
         }else{
           console.log("Found an authorized account:", accounts[0]);
@@ -71,10 +69,6 @@ function App() {
     } 
     // const accounts = await ethereum.request({ method: "eth_accounts" });
     // const accounts = await ethereum.request({ method: "eth_requestAccounts" });
-    // const provider = new ethers.providers.Web3Provider(ethereum);
-    // const signer = provider.getSigner();  
-    // const demerecContract = new ethers.Contract(contractAddress, contractABI, signer);
-    // let rl = await demerecContract.getMyRole();
   }
 
 
@@ -106,15 +100,15 @@ function App() {
         <h1> Hi!, Welcome To <b>THE DEMEREC DAPP</b> Website</h1>
       </header>
       {!account && (
-        <button className='connectButton' onClick={connectWallet}>
+        <button className="btn btn-outline-success" onClick={connectWallet}>
           Connect Wallet
         </button>
       )}
       {account && (
         <>
         <h1> Your Connected Wallet Address is: {account}</h1>
-        <h2> According to your address you are {role}</h2>
-        <Link to= {role.toLowerCase()}><button>Yes, Continue as {role}</button></Link>
+        <h2> Your Role: {role}</h2>
+        <Link to= {role.toLowerCase()}><button className='btn btn-outline-success'>Yes, Continue as {role}</button></Link>
         </>
       )}
       </>
@@ -130,6 +124,8 @@ function App() {
           <Route path='/manager' element={<ManagerTemplate/>} />
           <Route path='/admin' element={<AdminTemplate/>} />
           <Route path='/hospital' element={<HospitalTemplate/>} />
+          <Route path='/new%20user' element={<NewUserTemplate/>} />
+          <Route path='/patient' element={<PatientTemplate/>} />
         </Routes>
       </Router>
     </div>

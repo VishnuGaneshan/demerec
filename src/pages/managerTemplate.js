@@ -1,9 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {ethers} from "ethers";
-import abi from "../utils/abi.json";
-
-const contractAddress = "0x14A9d45Cb0d92498de0d5CF3525b35D839a0Ad7E";
-const contractABI = abi;
+import { contractABI, contractAddress} from "../utils/contract";
 
 const { ethereum } = window;
 const provider = new ethers.providers.Web3Provider(ethereum);
@@ -17,12 +14,8 @@ const ManagerTemplate = () => {
 
     const getDetails = async () => { 
         try {
-            let details = await demerecContract.imEmployee();
+            let details = await demerecContract.imManager();
             let [,result,] = details[0].split("'");
-            if(result === undefined){
-                alert("You Are Not A Manager! This is not your page")
-                return;
-            }
             let [_name , _phno , _aadhar , _address] = result.split("$");
             setEmployee([_name, _phno, _aadhar, _address]);
             getListOfAdminAddress();
@@ -52,7 +45,6 @@ const ManagerTemplate = () => {
         for(let i=0; i < listOfAdminAddress.length; i++){
             let address = listOfAdminAddress[i];
             let details = await demerecContract.adminDetail(address);
-            // console.log(details);
             let [,result,] = details[0].split("'");
             result = result.toUpperCase().split("$");
             result.push(address);
@@ -64,7 +56,6 @@ const ManagerTemplate = () => {
             _renderList.push(result);
         }
         setRenderList(_renderList);
-        // console.log(renderList);
     }
 
     async function addAdmin() {
@@ -194,29 +185,51 @@ const ManagerTemplate = () => {
 
     return (
         <>
+        {name ? (
+        <>
         <div className="App-header">
-            <h2>Welcome Back Manager</h2>
-            <p>Name: {name} Phone No.: {phno}</p>
-            <p>Aadhar No.: {aadhar} Address: {address}</p>
+            <h3>Name: {name} Phone No.: {phno}</h3>
+            <h3>Aadhar No.: {aadhar} Address: {address}</h3>
         </div>
+        <br/>
         <div className="Add-Admin" style={{backgroundColor: "white" , textAlign:"center" ,color: "black"}}>
             <h4>Add Admin</h4>
-            <label>Name:<input id="addName" type="text" placeholder="Name Of Admin" /></label>
-            <label>Phone no.: +91<input id="addPhone" type="number" placeholder="Phone no. Of Admin" /></label>
-            <label>Aadhar no.:<input id="addAadhar" type="number" placeholder="Aadhar no. Of Admin" /></label>
-            <br/>
-            <label>Location:<input id="addLocation" type="text" placeholder="Location Of Admin" /></label>
-            <label>Wallet Address:<input id="addAddress" type="text" placeholder="Wallet address Of Admin" /></label>
-            <button onClick={addAdmin} >Add Admin</button>
+            <div className="input-group">
+            <span className="input-group-text">Name</span>
+            <input className="form-control" id="addName" type="text" placeholder="Name Of Admin" />
+            </div>
+            <div className="input-group">
+            <span className="input-group-text">Phone No.: +91</span>
+            <input className="form-control" id="addPhone" type="number" placeholder="Phone no. Of Admin" />
+            </div>
+            <div className="input-group">
+            <span className="input-group-text">Aadhar No.</span>
+            <input className="form-control" id="addAadhar" type="number" placeholder="Aadhar no. Of Admin" />
+            </div>
+            <div className="input-group">
+            <span className="input-group-text">Location</span>
+            <input className="form-control" id="addLocation" type="text" placeholder="Location Of Admin" />
+            </div>
+            <div className="input-group">
+            <span className="input-group-text">Wallet Address</span>
+            <input className="form-control" id="addAddress" type="text" placeholder="Wallet address Of Admin" />
+            </div>
+            <button className="btn btn-primary" onClick={addAdmin} >Add Admin</button>
             <br/>
         </div>
+        <br/>
         <div className="Act-Deact-Admin">
-            <label>Change Job Status of Admin:</label>
-            <input id="modiAddress" type="text" placeholder="Blockchain Address" ></input>
-            <button onClick={activator} >Activate</button>
-            <button onClick={deactivator} >Deactivate</button>
+            <h4>Change Job Status of Admin</h4>
+            <div className="input-group">
+            <span className="input-group-text">Wallet Address</span>
+            <input className="form-control" id="modiAddress" type="text" placeholder="Wallet address Of Admin" ></input>
+            </div>
+            <button className="btn btn-primary" onClick={activator} >Activate</button>
+            <button className="btn btn-primary" onClick={deactivator} >Deactivate</button>
         </div>
-        <table>
+        <br/>
+        <h4>Admins List</h4>
+        <table className="table table-striped table-hover">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -229,6 +242,9 @@ const ManagerTemplate = () => {
             </thead>
             <AdminList/>
         </table>
+        </>) : (<div className="spinner-border text-success" role="status">
+        <span className="visually-hidden">Loading...</span>
+        </div>) }
         </>
     );
 };

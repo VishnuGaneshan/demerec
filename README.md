@@ -19,7 +19,7 @@ Deployed on Rinkeby Ethereum Test Network
 - Adding **Health Insurance** provider
 - Patients can Add and Update health insurance details
 - Easy claimbing of health insurance
-- **Tracking Disease** like *Covid 19, sugar, cancer,* etc. [state wise and hospital wise without]
+- **Tracking Disease** like *Covid 19, sugar, cancer,* etc. [state wise and hospital wise]
 - Add more medical record formates
 - many more
 

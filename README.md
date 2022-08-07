@@ -3,6 +3,12 @@ Full form is **Decentralized Medical Record App** - [Website Link](https://demer
 Deployed on Rinkeby Ethereum Test Network  
 [NOTE: You must have crypto wallet in your browser for accessing the above website]
 
+## Demo  
+*Sorry metamask content is not recorded, anyway I just used it to login and switch accounts*
+
+
+https://user-images.githubusercontent.com/82099692/183288635-cd264aa5-2c18-413d-8de6-9287d4f5cb7a.mov
+
 ## Purpose and Advantages
 - **Decentralize** Medical Field Data
 - Patient can **control** their medical record
